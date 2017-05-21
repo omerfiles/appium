@@ -43,6 +43,18 @@ public class MobileWebDriver {
 		
 		driver = new AndroidDriver<>(new URL("http://" + appiumServerAddress + "/wd/hub"), capabilities);
 	}
+	
+	public WebElement findElementById(String id) {
+		WebElement element = null;
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 10, 1000);
+			element = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(id)));
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return element;
+
+	}
 
 	public WebElement findElementByText(String text) {
 		WebElement element = null;
@@ -84,18 +96,10 @@ public class MobileWebDriver {
 		driver.startActivity(activityPackage, activityName);
 		
 	
+		
+	
 	}
 
-	public WebElement findElementById(String id) {
-		WebElement element = null;
-		try {
-			WebDriverWait wait = new WebDriverWait(driver, 10, 1000);
-			element = (MobileElement) wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(id)));
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-		return element;
-
-	}
+	
 
 }
