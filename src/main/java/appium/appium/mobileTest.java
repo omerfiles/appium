@@ -27,11 +27,11 @@ public class mobileTest {
 	@Test
 	public void test1() throws Exception {
 
-		driver.setConnection(Connection.WIFI);
+		//driver.setConnection(Connection.WIFI);
 
 		// driver.setLocation(34.55, 27.44, 300);
 
-		driver.startApp("com.android.calculator2.Calculator", "com.android.calculator2");
+//		driver.startApp("com.android.calculator2.Calculator", "com.android.calculator2");
 
 		driver.findElementByText("Add Contact").click();
 

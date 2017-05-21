@@ -1,21 +1,13 @@
 package appium.appium;
 
-import java.awt.font.ImageGraphicAttribute;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-
-import javax.imageio.ImageIO;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.html5.Location;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -27,6 +19,8 @@ import io.appium.java_client.android.Connection;
 public class MobileWebDriver {
 
 	AndroidDriver<WebElement> driver;
+	
+
 
 	/**
 	 * 
@@ -45,19 +39,12 @@ public class MobileWebDriver {
 		capabilities.setCapability("app", app.getAbsolutePath());
 		capabilities.setCapability("appPackage", "com.example.android.contactmanager");
 
-		// capabilities.setCapability("appPackage", "com.android.calculator2");
-
 		capabilities.setCapability("appActivity", ".ContactManager");
-
-		// capabilities.setCapability("appActivity",
-		// "com.android.calculator2.Calculator");
-
-		// capabilities.setCapability("resetKeyboard", true);
-		// capabilities.setCapability("unicodeKeyboard", true);
+		
 		driver = new AndroidDriver<>(new URL("http://" + appiumServerAddress + "/wd/hub"), capabilities);
 	}
 
-	public MobileElement findElementByText(String text) {
+	public WebElement findElementByText(String text) {
 		WebElement element = null;
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 10, 1000);
@@ -65,7 +52,7 @@ public class MobileWebDriver {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		return (MobileElement) element;
+		return  element;
 	}
 
 	public void quit() {
